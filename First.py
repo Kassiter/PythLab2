@@ -21,27 +21,25 @@ while i <= j:
     print("x: " + str(x))
     handle.write(str(x)+"\n")
     i = i + 1
+handle.write("")
 handle.close()
 f = open('x.txt')
 for lines in f.readlines():
-    arr = lines
+    items = lines.strip("()\n").split(",")
+    arr = items
 y = open("y.txt", "w")
-while i<=j:
-
-    if int(arr[i]) == 4:
-        y.write(math.sqrt(int(arr[i])) + 4)
-        i=i+1
-        continue
-    elif (int(arr[i]) > -10) & (int(arr[i]) <= 16):
-        y.write(int(arr[i]) ** 2)
-        i=i+1
-        continue
-    elif (int(arr[i]) < -8):
-        y.write(int(arr[i]) ** -1)
-        i=i+1
+i=0
+while i<arr.__len__():
+    print("entered func")
+    if float(arr[i]) == 4:
+        y.write(str(math.sqrt(float(arr[i])) + 4))
+    elif (float(arr[i]) > -10) & (float(arr[i]) <= 16):
+        y.write(str(float(arr[i]) ** 2))
+    elif (float(arr[i]) < -8):
+        y.write(str(float(arr[i]) ** -1))
         print()
-        continue
     print("Written")
+    i=i+1
 y.close()
 
 
