@@ -24,21 +24,29 @@ while i <= j:
 handle.write("")
 handle.close()
 f = open('x.txt')
+arr=[]
+i=0
 for lines in f.readlines():
     items = lines.strip("()\n").split(",")
-    arr = items
+    arr += items
 y = open("y.txt", "w")
 i=0
+yarr =arr
+print("arrlen: ")
+print(arr.__len__())
 while i<arr.__len__():
     print("entered func")
     if float(arr[i]) == 4:
-        y.write(str(math.sqrt(float(arr[i])) + 4))
+        yarr[i]=(str(math.sqrt(float(arr[i])) + 4))
     elif (float(arr[i]) > -10) & (float(arr[i]) <= 16):
-        y.write(str(float(arr[i]) ** 2))
+        yarr[i] =(str(float(arr[i]) ** 2))
     elif (float(arr[i]) < -8):
-        y.write(str(float(arr[i]) ** -1))
-        print()
+        yarr[i] =(str(float(arr[i]) ** -1))
     print("Written")
+    i=i+1
+i=0
+while i<yarr.__len__():
+    y.write(yarr[i]+"\n")
     i=i+1
 y.close()
 
