@@ -38,8 +38,11 @@ def func(x1): #Тут вписываем свою функцию
 def trunc(arr): #переопределяем trunc (отрезание чисел после запятой)
     l=0
     while l<arr.__len__():
-        arr[l]=math.trunc(float(arr[l])) #Используем уже существующую ф-цию "trunc", принимающую значение float
-        print(arr[l])
+        try:
+            arr[l]=math.trunc(float(arr[l])) #Используем уже существующую ф-цию "trunc", принимающую значение float
+            print(arr[l])
+        except ValueError as e: #Если функция в точке X не существует, выбивает ошибку, которую мы отлавливаем
+            print("error", e, "on line")
         l=l+1
     return arr
 
@@ -65,8 +68,9 @@ y.close()
 Yaxis=trunc(fromFile("y.txt")) #вызов переопределенной нами функции trunc
 Xaxis=trunc(fromFile("x.txt"))
 plt.plot(Xaxis,Yaxis) #строим график по целым числам
-plt.ylabel('ТУТ ПИШЕМ СВОЮ ФУНКЦИЮ')
+plt.ylabel('Function')
 plt.show()
 
+#END
 
 
