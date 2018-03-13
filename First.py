@@ -1,4 +1,5 @@
 import math, random
+import matplotlib.pyplot as plt
 
 handle = open("x.txt", "w")
 y = open("y.txt", "w")
@@ -24,7 +25,7 @@ def fromFile(name):
     return output
 
 
-def func(x1):
+def func(x1): #Тут вписываем свою функцию
     if x1 == 4:
         return (math.sqrt(float(x1)) + 4)
     elif (float(x1) > -10) & (float(x1) <= 16):
@@ -33,6 +34,14 @@ def func(x1):
         return (float(x1) ** -1)
     return
 
+
+def trunc(arr): #переопределяем trunc (отрезание чисел после запятой)
+    l=0
+    while l<arr.__len__():
+        arr[l]=math.trunc(float(arr[l])) #Используем уже существующую ф-цию "trunc", принимающую значение float
+        print(arr[l])
+        l=l+1
+    return arr
 
 i = 0
 j = input("Enter amount of x");
@@ -53,7 +62,11 @@ while i<yarr.__len__():
     i=i+1
 y.close()
 
-
+Yaxis=trunc(fromFile("y.txt")) #вызов переопределенной нами функции trunc
+Xaxis=trunc(fromFile("x.txt"))
+plt.plot(Xaxis,Yaxis) #строим график по целым числам
+plt.ylabel('ТУТ ПИШЕМ СВОЮ ФУНКЦИЮ')
+plt.show()
 
 
 
